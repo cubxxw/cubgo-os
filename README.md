@@ -81,13 +81,13 @@ Go语言编写操作系统内核一直是一个冷门的领域，难以想一个
 
 **3.biscuit**
 
-[mit-pdos/biscuitgithub.com/mit-pdos/biscuit![img](./images/v2-b49543ef2cce95c5a0dc274833a8e145_ipico.jpg)](https://link.zhihu.com/?target=https%3A//github.com/mit-pdos/biscuit)
+
 
 这是一个博士论文项目，完成度很高，多核，多线程，网络协议栈等等。这个项目是奔着写一个操作系统内核去的，其兼容了一些POSIX接口，根据论文里面的内容，可以跑redis和nginx。实现方式是hack了linux的amd64 arch相关代码，注入了自己的实现，代码整体分为两部分，一部分存在于go的标准库里面的runtime目录下，一部分是在项目的biscuit目录下。
 
 我最早的想法也是借鉴这个项目，不过不是hack runtime的某个arch和os，而是新造了一个GOOS=eggos，编译的时候指定这个GOOS环境变量就能生成相应的内核，不过为了能让工具链和标准库能编译通过，修改了很多标准库代码，大部分只是加了一个编译tag，比如这个文件的这行代码，就需要在开头加上我自己的操作系统名称，类似这样的文件很多，这样做其实是不利于跟进go的版本升级的。
 
-golang/gogithub.com/golang/go/blob/8cd75f3da094931c59636b85a87b4f680a208799/src/os/dir_unix.go#L5![img](./images/v2-5d5330f6d421401028228973eaee6d74_ipico.jpg)
+
 
 **4.unik**
 
@@ -126,6 +126,8 @@ golang/gogithub.com/golang/go/blob/8cd75f3da094931c59636b85a87b4f680a208799/src/
 
 
 ## 类似项目
+
++ 现代操作系统
 
 + [清华大学rcore项目](http://rcore-os.cn/rCore-Tutorial-Book-v3/)
 
