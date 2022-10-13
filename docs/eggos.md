@@ -116,7 +116,7 @@ qemu-system-x86_64 -m 256M -nographic -no-reboot -serial mon:stdio -netdev user,
 
 > 没有图形界面终端，如windows的`wsl`需要加上`-nographic`，从而以非图形化方式启动qem
 
-![image-20221013164722018](https://sm.nsddd.top/smsmimage-20221013164722018.png?xxw@nsddd.top)
+![image-20221013220451758](http://sm.nsddd.top/smimage-20221013220451758.png?xxw@nsddd.top)
 
  🔥上面的图片表示我们已经安装成功了
 
