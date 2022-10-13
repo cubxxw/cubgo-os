@@ -75,7 +75,7 @@ docker commit
 
 eggos在每个版本会生成一个ISO镜像文件，我们可以从github的release界面直接下载，从网址 https://github.com/icexin/eggos/releases 进入到eggos的release界面，点击`eggos.iso`下载。
 
-![image-20221013162445155](http://sm.nsddd.top/smsmimage-20221013162445155.png?xxw@nsddd.top)
+![image-20221013162445155](http://sm.nsddd.top/smimage-20221013162445155.png?xxw@nsddd.top)
 
 
 
@@ -116,7 +116,7 @@ qemu-system-x86_64 -m 256M -nographic -no-reboot -serial mon:stdio -netdev user,
 
 > 没有图形界面终端，如windows的`wsl`需要加上`-nographic`，从而以非图形化方式启动qem
 
-![image-20221013164722018](http://sm.nsddd.top/smsmimage-20221013164722018.png?xxw@nsddd.top)
+![image-20221013164722018](https://sm.nsddd.top/smsmimage-20221013164722018.png?xxw@nsddd.top)
 
  🔥上面的图片表示我们已经安装成功了
 
@@ -136,7 +136,7 @@ qemu-system-x86_64 -m 256M -nographic -no-reboot -serial mon:stdio -netdev user,
 js
 ```
 
-![image-20221013165350046](https://sm.nsddd.top/smsmimage-20221013165350046.png?xxw@nsddd.top)
+![image-20221013205940507](http://sm.nsddd.top/smimage-20221013205940507.png?xxw@nsddd.top)
 
 ⬇️ 接下来我们可以使用`js`一样来使用这个解释器。
 
