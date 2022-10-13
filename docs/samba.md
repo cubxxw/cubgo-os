@@ -2,6 +2,53 @@
 
 [toc]
 
+## 基本使用
+
+> 当前使用的是`docker`的`Ubuntu`镜像
+
+```bash
+sudo root
+apt-get install samba
+touch /etc/samba/smbpasswd
+smbpasswd -a xionxinwei  # 设置用户名和密码
+```
+
+📮 修改配置文件
+
+```
+vim /etc/samba/smb.conf
+```
+
+📄 写入以下内容（`G`到最后一行，`o`下一行输入）
+
+```json
+[cub-os docker-ubuntu]
+	comment = ubuntu
+	path = /home/xiongxinwei
+	writable = yes
+	valid user = xiongxinwei
+	available = yes
+	create mask = 0777
+	directory mask = 0777
+	public = yes
+```
+
+⚡ 重启服务
+
+```
+/etc/init.d/smbd restart
+```
+
+> Linux中套路一样，一般在`etc/init.d`下面都有对应的文件，使用`restart`刷新就好。
+
+💡 验证
+
+```
+smb://IP地址
+```
+
+> 此时就是可以进去虚拟机里面的目录，这个就和`ftp`类似，我们也是把目录给共享出去l
+
 ## Samba的工作原理
 
 Samba服务功能强大，这与其通信基于SMB/CIFS协议有关。SMB不仅提供目录和打印机共享，还支持认证、权限设置。在早期，SMB运行于NBT协议（NetBIOS over TCP/IP）上，使用UDP协议的137、138及TCP协议的139端口；后期SMB经过开发，可以直接运行于TCP/IP协议上，没有额外的NBT层，使用TCP协议的445端口。
@@ -16,7 +63,7 @@ Samba服务功能强大，这与其通信基于SMB/CIFS协议有关。SMB不仅�
 
 ### 建立连接
 
-当SMB协议版本确定后，客户端进程向服务器发起一个用户或共享的认证，这个过程是通过发送SesssetupX请求数据报实现的。客户端发送一对用户名和密码或一个简单密码到服务器，然后服务器通过发送一个SesssetupX请应答数据报来允许或拒绝本次连接。
+当SMB协议版本确定后，客户端进程向服务器发起一个用户或共享的认证，这个过程是通过发送`SesssetupX`请求数据报实现的。客户端发送一对用户名和密码或一个简单密码到服务器，然后服务器通过发送一个`SesssetupX`请应答数据报来允许或拒绝本次连接。
 
 
 

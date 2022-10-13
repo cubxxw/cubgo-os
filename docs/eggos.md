@@ -12,7 +12,7 @@
 💡 你可以选择直接`push`远程打包好的`eggos-ubuntu`镜像，这样的话，可以不用下面的步骤
 
 ```
-
+docker pull 3293172751/cubos-ubuntu:1.0.2
 ```
 
 
@@ -40,6 +40,7 @@ docker run -it exec --name ubuntu-eggos ubuntu /bin/bash
 apt-get install vim
 apt-get install git
 apt-get install golang
+apt-get install net-tools  # 这个还需要安装一个net-tools 因为ipconfig 需要
 ```
 
 
@@ -74,7 +75,7 @@ docker commit
 
 eggos在每个版本会生成一个ISO镜像文件，我们可以从github的release界面直接下载，从网址 https://github.com/icexin/eggos/releases 进入到eggos的release界面，点击`eggos.iso`下载。
 
-![image-20221013162445155](http://sm.nsddd.top/smimage-20221013162445155.png?xxw@nsddd.top)
+![image-20221013162445155](http://sm.nsddd.top/smsmimage-20221013162445155.png?xxw@nsddd.top)
 
 
 
@@ -115,7 +116,7 @@ qemu-system-x86_64 -m 256M -nographic -no-reboot -serial mon:stdio -netdev user,
 
 > 没有图形界面终端，如windows的`wsl`需要加上`-nographic`，从而以非图形化方式启动qem
 
-![image-20221013164722018](http://sm.nsddd.top/smimage-20221013164722018.png?xxw@nsddd.top)
+![image-20221013164722018](http://sm.nsddd.top/smsmimage-20221013164722018.png?xxw@nsddd.top)
 
  🔥上面的图片表示我们已经安装成功了
 
@@ -135,7 +136,7 @@ qemu-system-x86_64 -m 256M -nographic -no-reboot -serial mon:stdio -netdev user,
 js
 ```
 
-![image-20221013165350046](http://sm.nsddd.top/smimage-20221013165350046.png?xxw@nsddd.top)
+![image-20221013165350046](https://sm.nsddd.top/smsmimage-20221013165350046.png?xxw@nsddd.top)
 
 ⬇️ 接下来我们可以使用`js`一样来使用这个解释器。
 
@@ -181,7 +182,7 @@ undefined
 
 ⬇️ 下面我分别开启了`8080`端口和`8081`端口，并且企图杀死`8080`进程并且重新进去
 
-![image-20221013173405464](./images/image-20221013173405464.png)
+![image-20221013173405464](http://sm.nsddd.top/smimage-20221013173405464.png?xxw@nsddd.top)
 
 再一次进入
 
@@ -204,12 +205,15 @@ qemu-system-x86_64 -m 256M -nographic -no-reboot -serial mon:stdio -netdev user,
 
 ⬇️ 我们通过`mount`命令挂载一个`samba`文件系统来体验`eggos`的文件系统功能。
 
+查看自己的`IP`地址
+
+![image-20221013181120314](http://sm.nsddd.top/smimage-20221013181120314.png?xxw@nsddd.top)
+
 💡简单的一个案例如下：
 
 ```bash
 # 找到自己的ip
-
-mount smb://icexin:eggos@172.28.90.3:445/sambashare /share
+mount smb://icexin:eggos@172.17.0.3:445/sambashare /share
 ```
 
 
