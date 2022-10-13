@@ -4,7 +4,7 @@
 
 > [关于操作系统的学习](https://github.com/3293172751/os)
 
-
++ [x] [eggos文档](docs/eggos.md)
 
 ## 背景
 
@@ -36,15 +36,15 @@
 
 + 多核
 + 内核支持的线程
-+ 具有并发、延迟和组提交的日志式 FS
++ 具有并发、延迟和组提交的日志式 `FS`
 + 用于写入时复制和延迟映射的匿名/文件页面的虚拟内存
-+ TCP/IP 堆栈
-+ AHCI SATA 磁盘驱动程序
++ `TCP/IP` 堆栈
++ `AHCI SATA` 磁盘驱动程序
 + 英特尔 10Gb 网卡驱动程序
 
-Biscuit 还包括一个引导加载程序、一个部分 libc（“litc”）和一些用户空间程序，尽管我们可以使用 GRUB 或现有的 libc 实现，如 musl。
+`Biscuit` 还包括一个引导加载程序、一个部分 libc（“litc”）和一些用户空间程序，尽管我们可以使用 `GRUB` 或现有的 `libc` 实现，如 `musl`。
 
-这个 repo 是 Go repo ( https://github.com/golang/go ) 的一个分支。几乎所有 Biscuit 的代码都在 biscuit/ 中。
+这个 `repo` 是 `Go repo` ( https://github.com/golang/go ) 的一个分支。几乎所有 Biscuit 的代码都在 biscuit/ 中。
 
 
 
