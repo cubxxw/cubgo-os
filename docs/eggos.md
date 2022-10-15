@@ -114,7 +114,7 @@ apt install qemu-system-x86
 qemu-system-x86_64 -m 256M -nographic -no-reboot -serial mon:stdio -netdev user,id=eth0,hostfwd=tcp::8080-:80 -device e1000,netdev=eth0 -cdrom eggos.iso
 ```
 
-> 没有图形界面终端，如windows的`wsl`需要加上`-nographic`，从而以非图形化方式启动qem
+> 没有图形界面终端，如windows的`wsl`需要加上`-nographic`，从而以非图形化方式启动qemu
 
 ![image-20221013220451758](http://sm.nsddd.top/smimage-20221013220451758.png?xxw@nsddd.top)
 
@@ -192,8 +192,6 @@ undefined
 qemu-system-x86_64 -m 256M -nographic -no-reboot -serial mon:stdio -netdev user,id=eth0,hostfwd=tcp::8080-:80 -device e1000,netdev=eth0 -cdrom eggos.iso
 ```
 
-
-
 ### 文件系统
 
 `eggos`现在没有实现完整的文件系统，而是使用了 [afero](https://github.com/spf13/afero)作为文件系统的抽象接口。
@@ -216,7 +214,9 @@ qemu-system-x86_64 -m 256M -nographic -no-reboot -serial mon:stdio -netdev user,
 mount smb://icexin:eggos@172.17.0.3:445/sambashare /share
 ```
 
-
+> ⚠️ 注意， 这里可能会遇到如下问题
+>
+> - 挂载时报错permission denied ，此时是因为这里的用户名也就是上述的`icexin`的权限不足，可以改为root，或者给权限。
 
 ```sh
 root@eggos# cd /share
@@ -250,6 +250,4 @@ root@eggos# js fib.js
 然后我们使用`cat`命令打印出`fib.js`文件的内容，里面使用Javascript实现了斐波那契数列算法，并打印出第10个斐波那契数。
 
 最后我们执行`js`命令，用`fib.js`作为参数，效果是执行了`fib.js`里面的Javascript代码，打印出结果`55`。
-
-
 

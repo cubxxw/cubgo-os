@@ -26,12 +26,18 @@ vim /etc/samba/smb.conf
 	comment = ubuntu
 	path = /home/xiongxinwei
 	writable = yes
-	valid user = xiongxinwei
+	valid users = xiongxinwei
 	available = yes
 	create mask = 0777
 	directory mask = 0777
 	public = yes
 ```
+
+> ⚠️ 注意，配置文件中最上方中括号里的[cub-os docker-ub]也是挂载路径的一部分
+
+如果是上述配置，则需访问
+
+>  smb://samba.username:samba.password@samba.url/cub-os docker-ubuntu/ /share
 
 ⚡ 重启服务
 
