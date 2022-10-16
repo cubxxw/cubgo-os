@@ -293,3 +293,114 @@ int mian()
 **回到eggos检验：**
 
 ![image-20221016142735060](http://sm.nsddd.top/smimage-20221016142735060.png)
+
+
+
+## HTTP服务
+
+`eggos`内置了一个简单的http服务器，使用`go httpd`命令即可后台启动HTTP服务器。 这个服务器默认绑定了两个地址：
+
++ `/debug/pprof`，go著名的pprof地址，里面可以查看很多当前go进程的debug信息
++ `/fs/`，根目录的映射，可以从浏览器访问整个文件系统。
+
+打开浏览器，输入`http://127.0.0.1:8080/debug/pprof/`，即可打开debug页面，从里面我们可以获取当前运行的goroutine堆栈快照。
+
+![http pprof信息](http://sm.nsddd.top/smhttp-pprof.png)
+
+输入`http://127.0.0.1:8080/fs/`即可访问文件系统根目录，从里面我们可以发现刚刚挂载的`/share`目录。
+
+![fib.js的内容](http://sm.nsddd.top/smfib-js.png)
+
+一路点进去之后我们就能访问`/share/fib.js`的内容。
+
+> 很遗憾的是目前`httpd`一旦启动就没办法停止，只能重新启动eggos来停止服务
+
+> docker搭建的镜像面临的问题：
+>
+> ![graphic](https://docker.nsddd.top/assets/udMYZbpm9a1vLHJ.5f6a5929.jpg)
+>
+> docker网络的几种模式
+>
+> + **bridge模式：使用--network bridge指定，默认使用docker0**
+> + **host模式：使用--network host指定**
+> + **none模式：使用--network none指定**
+> + **container模式：使用--network container:NAME或者容器ID指定**
+
+⚠️ 我们需要改成`host`主机模式访问，或者如果有大佬如果会iptables，直接加iptables转发~，欢迎pr
+
+**直接使用宿主机的 IP 地址与外界进行通信，不再需要额外进行NAT 转换。**
+
+```bash
+docker run -it --network host --name cubos_host db168e4fe87d
+```
+
+
+
+⚡ 我们重新挂载然后访问
+
+![image-20221016151412615](http://sm.nsddd.top/smimage-20221016151412615.png)
+
+> ⚠️暂时没办法访问，跳过~
+
+
+
+## NES模拟器
+
+> 本小节必须在图形界面下运行qemu
+
+`eggos`内置了一个nes模拟器，也就是我们小时候玩的小霸王游戏机模拟器，可以运行一些简单的任天堂FC游戏。
+
+```bash
+root@docker-desktop:/home/samba# git clone https://github.com/fogleman/nes.git
+```
+
+接着文件系统那一节的内容，我们这次需要在共享文件夹里面准备一个nes rom。
+
+```sh
+root@eggos#  mount smb://root:1234@172.17.0.3:445/samba /share2
+
+root@eggos# ls /share2
+-rw-rw-rw- 111   fib.js
+-rw-rw-rw- 40976 mario.nes
+```
+
+相比于之前，多了一个`mario.nes`文件，这个就是我们即将运行的`超级马里奥兄弟`游戏。
+
+执行如下命令即可启动nes模拟器，其中`-rom`参数指定待运行的rom文件。
+
+```sh
+root@eggos# nes -rom /share/mario.nes
+```
+
+如果一切成功的话，可以看到如下画面
+
+![nes-mario](http://sm.nsddd.top/smnes-mario.png)
+
+操作按键是固定的，分别如下:
+
++ `W`, `S`, `A`, `D`控制手柄的上下左右
++ `K`, `J`控制手柄的`A`和`B`
++ 空格和回车控制手柄的选择和开始
++ `Q`键可以退出游戏
+
+> 如果不开启模拟器加速的话，运行会比较卡，MacOS用户可以通过在启动qemu的时候添加`-M accel=hvf`开启硬件加速，linux用户可以添加`-M accel=kvm`来启动加速。
+
+
+
+### 镜像
+
+---
+
+到这里就构建出第二版镜像文件了
+
+```
+docker pull 3293172751/cubos-ubuntu:1.0.5
+```
+
+
+
+## 扩展阅读
+
++ [1] A JavaScript interpreter in Go https://github.com/robertkrimen/otto
++ [2] Ubuntu上安装samba服务 https://ubuntu.com/tutorials/install-and-configure-samba
++ [3] NES emulator written in Go https://github.com/fogleman/nes
