@@ -5,15 +5,27 @@
 ## 基本使用
 
 > 当前使用的是`docker`的`Ubuntu`镜像
+>
+> **创建需要共享的文件夹**
+>
+> 本项目在/home下新建 samba目录并且给权限：
+>
+> ```
+> mkdir /home/samba && chmod 777 /home/samba/
+> ```
 
 ```bash
 sudo root
 apt-get install samba
 touch /etc/samba/smbpasswd
-smbpasswd -a xionxinwei  # 设置用户名和密码
+smbpasswd -a root  # 设置用户名和密码
+#1234
 ```
 
 📮 修改配置文件
+
+> `/etc/samba/smb.conf`
+> 这个文件大概分为`全局配置`和`共享配置`
 
 ```
 vim /etc/samba/smb.conf
@@ -21,12 +33,12 @@ vim /etc/samba/smb.conf
 
 📄 写入以下内容（`G`到最后一行，`o`下一行输入）
 
-```json
+```bash
 [cub-os docker-ubuntu]
 	comment = ubuntu
-	path = /home/xiongxinwei
+	path = /home/root
 	writable = yes
-	valid users = xiongxinwei
+	valid users = root
 	available = yes
 	create mask = 0777
 	directory mask = 0777
@@ -55,15 +67,73 @@ smb://IP地址
 
 > 此时就是可以进去虚拟机里面的目录，这个就和`ftp`类似，我们也是把目录给共享出去l
 
+
+
+## 再添加用户
+
+```
+su root
+vim /etc/samba/smb.conf 
+```
+
+
+
+**在最后添加：**
+
+```bash
+[samba]
+   comment = smb share
+   path = /home/samb
+   public = yes
+   guest ok = yes
+   writable = yes
+   available = yes
+   browseable = yes
+   create mask=0775
+   directory mask=0775
+```
+
+
+
+**添加用户：**
+
+```bash
+smbpasswd -a root #密码：1234
+```
+
+
+
+**重新启动：**
+
+```bash
+service smbd restart
+```
+
+
+
+**验证：**
+
+在装有win10的电脑上输入地址
+
+
+
+
+
+##  给定用户权限
+
+![samba](http://sm.nsddd.top/smsamba.png)
+
+
+
 ## Samba的工作原理
 
-Samba服务功能强大，这与其通信基于SMB/CIFS协议有关。SMB不仅提供目录和打印机共享，还支持认证、权限设置。在早期，SMB运行于NBT协议（NetBIOS over TCP/IP）上，使用UDP协议的137、138及TCP协议的139端口；后期SMB经过开发，可以直接运行于TCP/IP协议上，没有额外的NBT层，使用TCP协议的445端口。
+Samba服务功能强大，这与其通信基于`SMB/CIFS`协议有关。SMB不仅提供目录和打印机共享，还支持认证、权限设置。在早期，SMB运行于NBT协议（NetBIOS over TCP/IP）上，使用UDP协议的137、138及TCP协议的139端口；后期SMB经过开发，可以直接运行于TCP/IP协议上，没有额外的NBT层，使用TCP协议的445端口。
 
 ## Samba的工作流程主要为四个阶段
 
 ### 协议协商
 
-客户端在访问Samba服务器时，首先由客户端发送一个SMB negprot请求数据报，并列出它所支持的所有SMB协议版本。服务器在接收到请求信息后开始响应请求，并列出希望使用的协议版本，选择最优的SMB类型。如果没有可使用的协议版本则返回oXFFFFH信息，结束通信。
+客户端在访问`Samba`服务器时，首先由客户端发送一个`SMB negprot`请求数据报，并列出它所支持的所有SMB协议版本。服务器在接收到请求信息后开始响应请求，并列出希望使用的协议版本，选择最优的SMB类型。如果没有可使用的协议版本则返回oXFFFFH信息，结束通信。
 
 
 

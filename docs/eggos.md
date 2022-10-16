@@ -192,6 +192,8 @@ undefined
 qemu-system-x86_64 -m 256M -nographic -no-reboot -serial mon:stdio -netdev user,id=eth0,hostfwd=tcp::8080-:80 -device e1000,netdev=eth0 -cdrom eggos.iso
 ```
 
+
+
 ### 文件系统
 
 `eggos`现在没有实现完整的文件系统，而是使用了 [afero](https://github.com/spf13/afero)作为文件系统的抽象接口。
@@ -203,6 +205,10 @@ qemu-system-x86_64 -m 256M -nographic -no-reboot -serial mon:stdio -netdev user,
 
 ⬇️ 我们通过`mount`命令挂载一个`samba`文件系统来体验`eggos`的文件系统功能。
 
+镜像中设置[samba](./samba.md)文件系统`root-1234`：
+
+![image-20221016124123019](http://sm.nsddd.top/smimage-20221016124123019.png)
+
 查看自己的`IP`地址
 
 ![image-20221013181120314](http://sm.nsddd.top/smimage-20221013181120314.png?xxw@nsddd.top)
@@ -211,12 +217,27 @@ qemu-system-x86_64 -m 256M -nographic -no-reboot -serial mon:stdio -netdev user,
 
 ```bash
 # 找到自己的ip
-mount smb://icexin:eggos@172.17.0.3:445/sambashare /share
+mount smb://root:1234@172.17.0.3:445/samba /share
 ```
 
 > ⚠️ 注意， 这里可能会遇到如下问题
 >
-> - 挂载时报错permission denied ，此时是因为这里的用户名也就是上述的`icexin`的权限不足，可以改为root，或者给权限。
+> - 挂载时报错`permission denied` ，此时是因为这里的用户名也就是上述的`icexin`的权限不足，可以改为`root`，或者给权限。
+>
+> ```
+> mkdir /home/share && chmod 777 -R /home/share/
+> ```
+>
+> - root@eggos# mount smb://root:1234@172.17.0.3:445/samba /share
+>   response error: {Network Name Not Found} The specified share name cannot be found on the remote server. 表示在远程找不到共享名称
+>
+> 
+>
+> **第一个好像配置的有问题，但是不知道什么原因，所以又配置了一个`samba1`，这个成功了**
+>
+> ![image-20221016141741165](http://sm.nsddd.top/smimage-20221016141741165.png)
+>
+> ![image-20221016141954717](http://sm.nsddd.top/smimage-20221016141954717.png)
 
 ```sh
 root@eggos# cd /share
@@ -251,3 +272,24 @@ root@eggos# js fib.js
 
 最后我们执行`js`命令，用`fib.js`作为参数，效果是执行了`fib.js`里面的Javascript代码，打印出结果`55`。
 
+
+
+#### 验证
+
+在docker的ubuntu镜像中创建文件`a.c`
+
+![image-20221016142556967](http://sm.nsddd.top/smimage-20221016142556967.png)
+
+```c
+#include<stdio.h>
+int mian()
+{
+	return 0;
+}
+```
+
+
+
+**回到eggos检验：**
+
+![image-20221016142735060](http://sm.nsddd.top/smimage-20221016142735060.png)
