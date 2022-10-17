@@ -1,5 +1,12 @@
 # eggos
 
+## 目录
+<!-- START doctoc -->
+<details>
+<summary>📇 目录折叠</summary>
+
+</details>
+<!-- START doctoc -->
 [toc]
 
 ## 环境
