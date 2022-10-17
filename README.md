@@ -1,3 +1,21 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [cubgo-os](#cubgo-os)
+  - [背景](#%E8%83%8C%E6%99%AF)
+    - [eggos操作系统](#eggos%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F)
+    - [Biscuit操作系统](#biscuit%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F)
+    - [mit 地鼠操作系统](#mit-%E5%9C%B0%E9%BC%A0%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F)
+  - [分析](#%E5%88%86%E6%9E%90)
+  - [类似项目](#%E7%B1%BB%E4%BC%BC%E9%A1%B9%E7%9B%AE)
+  - [并行或分布式算法](#%E5%B9%B6%E8%A1%8C%E6%88%96%E5%88%86%E5%B8%83%E5%BC%8F%E7%AE%97%E6%B3%95)
+    - [课程简介](#%E8%AF%BE%E7%A8%8B%E7%AE%80%E4%BB%8B)
+    - [课程资源](#%E8%AF%BE%E7%A8%8B%E8%B5%84%E6%BA%90)
+    - [资源汇总](#%E8%B5%84%E6%BA%90%E6%B1%87%E6%80%BB)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # cubgo-os
 
  ⚡cubgo-os（幼兽操作系统）由Go语言开发，可以运行基础应用~
