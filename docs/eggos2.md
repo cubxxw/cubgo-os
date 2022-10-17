@@ -31,7 +31,7 @@ $ go env -w GOPROXY=https://goproxy.cn
 
 
 
-### mage构建工具 
+### mage构建工具
 
 mage是一个类似make的构建工具，但它的makefile是用go语言编写的，可以跨平台，eggos最初是用的makefile，后面切换到mage上了。安装mage也非常简单。
 
