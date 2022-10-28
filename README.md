@@ -10,7 +10,6 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**
 
-
 - [背景](#%E8%83%8C%E6%99%AF)
   - [eggos操作系统](#eggos%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F)
   - [Biscuit操作系统](#biscuit%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F)
