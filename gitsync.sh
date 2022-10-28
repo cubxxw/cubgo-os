@@ -56,7 +56,7 @@ if [ 0 -lt ${#is_change} ]; then  # 有文件改动
 
     echo "是否选择提交类型(默认选择yes)？(Y/N)"
     # 输入  
-    read -p "y/Y or n/N \n  ➡️" choice
+    read -p "#> " choice
     # 判断
     if [ $choice == "n" ] || [ $choice == "N" ]; then
         echo "您选择了不输入提交类型，这将会省略commit的<类型>参数"
@@ -84,10 +84,10 @@ if [ 0 -lt ${#is_change} ]; then  # 有文件改动
         perf="perf：性能优化"
 
         echo "请输入提交类型(前面的序号)："
-        read -p "➡️" type
+        read -p "#> " type
 
         echo "请输入对应的说明"
-        read -p "➡️" desc
+        read -p "#> " desc
         if [ $type == "1" ]; then
             type=feat
             type2=$feat
