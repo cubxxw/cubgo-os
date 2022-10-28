@@ -1,0 +1,10 @@
+{
+    "go.toolsEnvVars": {
+        "GOOS": "linux",
+        "GOARCH": "amd64",
+    },
+    "files.associations": {
+        "multiboot.h": "c"
+    },
+    "go.buildTags": "mage"
+}
