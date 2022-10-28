@@ -309,7 +309,7 @@ int mian()
 
 `eggos`内置了一个简单的http服务器，使用`go httpd`命令即可后台启动HTTP服务器。 这个服务器默认绑定了两个地址：
 
-+ `/debug/pprof`，go著名的pprof地址，里面可以查看很多当前go进程的debug信息
++ `/debug/pprof`，go著名的`pprof`地址，里面可以查看很多当前go进程的debug信息
 + `/fs/`，根目录的映射，可以从浏览器访问整个文件系统。
 
 打开浏览器，输入`http://127.0.0.1:8080/debug/pprof/`，即可打开debug页面，从里面我们可以获取当前运行的goroutine堆栈快照。

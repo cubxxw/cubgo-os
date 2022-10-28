@@ -46,7 +46,7 @@ if [ 0 -lt ${#is_change} ]; then  # 有文件改动
     echo "监测到程序改动，程序将会自动帮您同步⚡ 请稍等...(The program will automatically help you synchronize ⚡ Please wait...)"
     echo " "
     echo "Myblog: http://nsddd.top"
-    echo
+    echo " "
     echo "脚本地址在线浏览🧷：https://sm.nsddd.top/uploads/2022/10/26/2iCzooCq_gitsync.sh"
 
     is_change=$(git status -s)  # 判断是否有文件改动
@@ -54,9 +54,9 @@ if [ 0 -lt ${#is_change} ]; then  # 有文件改动
     # 输出git信息
     git status && git remote -v && git branch -a
 
-    echo "是否选择提交类型(默认选择yes)？(Y/N)"
+echo "是否选择提交类型(默认选择yes)？(Y/N)"
     # 输入  
-    read -p "#> " choice
+    read -p "=> " choice
     # 判断
     if [ $choice == "n" ] || [ $choice == "N" ]; then
         echo "您选择了不输入提交类型，这将会省略commit的<类型>参数"
@@ -84,10 +84,10 @@ if [ 0 -lt ${#is_change} ]; then  # 有文件改动
         perf="perf：性能优化"
 
         echo "请输入提交类型(前面的序号)："
-        read -p "#> " type
+        read -p "=> " type
 
         echo "请输入对应的说明"
-        read -p "#> " desc
+        read -p "=> " desc
         if [ $type == "1" ]; then
             type=feat
             type2=$feat
@@ -124,15 +124,25 @@ if [ 0 -lt ${#is_change} ]; then  # 有文件改动
     fi
 
     git add .
-    git commit -s -m "$type($desc)： $guser"  # -s 用于签名, -m 用于备注
-    # pull
-    result=$(git pull origin $branch)
-    tmp=$(echo $result | grep "fix conflicts")
+    git commit -s -m "$type($desc): $guser"  # -s 用于签名, -m 用于备注
+    result=$(git pull origin $branch)   # 拉取远程分支
+    tmp=$(echo $result | grep "fix conflicts")  
     if [ "$tmp" != "" ]
     then
         echo "(ノ=Д=)ノ┻━┻ 合并冲突, 请手动解决后提交"
+        # 查看冲突文件
+        git diff --name-only --diff-filter=U  # --diff-filter=U 用于查看冲突文件 --name-only 用于只显示文件名
     else
-        # 推送
+        # 推送并且保证推送成功
+        git push origin $branch
+    fi
+
+    echo "⬇️⬇️⬇️⬇️⬇️"
+    # 判断推动是否成功
+    if [ $? -eq 0 ]; then  
+        echo "⚠️ 推送成功"
+    else
+        echo "⚠️ 推送失败"
         git push origin $branch
     fi
     
@@ -143,6 +153,8 @@ else  # 没有文件改动
     if [[ "$tmp" != "" ]]
     then
       echo "(ノ=Д=)ノ┻━┻ 合并冲突, 请手动解决后提交"
+      # 查看冲突文件
+        git diff --name-only --diff-filter=U  
     fi
 fi
 
