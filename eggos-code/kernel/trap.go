@@ -37,7 +37,7 @@ var (
 	}
 )
 
-//go:notinheap
+//go:notinheap uintptr表示无符号整数
 type trapFrame struct {
 	AX, BX, CX, DX    uintptr
 	BP, SI, DI, R8    uintptr
@@ -103,6 +103,8 @@ func checkKernelPanic(t *Thread) {
 	if tf.CS != _KCODE_IDX<<3 {
 		return
 	}
+
+	//printReg表示打印寄存器的值
 	printReg("tid", uintptr(t.id))
 	printReg("no", tf.Trapno)
 	printReg("err", tf.Err)
@@ -124,6 +126,7 @@ func preparePanic(tf *trapFrame) {
 
 // ChangeReturnPC change the return pc of a trap
 // must be called in trap handler
+//
 //go:nosplit
 func changeReturnPC(tf *trapFrame, pc uintptr) {
 	// tf.Err, tf.IP, tf.CS, tf.FLAGS = pc, tf.CS, tf.FLAGS, tf.IP

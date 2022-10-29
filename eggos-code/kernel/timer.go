@@ -1,3 +1,12 @@
+/*
+ * @Description:
+ * @Author: xiongxinwei 3293172751nss@gmail.com
+ * @Date: 2022-10-28 11:58:45
+ * @LastEditTime: 2022-10-29 11:27:00
+ * @FilePath: \eggos-code\kernel\timer.go
+ * @Github_Address: https://github.com/3293172751/cs-awesome-Block_Chain
+ * Copyright (c) 2022 by xiongxinwei 3293172751nss@gmail.com, All Rights Reserved. @blog: http://nsddd.top
+ */
 package kernel
 
 import (
@@ -26,6 +35,7 @@ var (
 
 	// the unix time of cmos read time
 	baseUnixTime int64
+
 	// the counter of cmos read time
 	clockBaseCounter int64
 
@@ -33,6 +43,7 @@ var (
 )
 
 // pitCounter return the current counter of 8259a
+//
 //go:nosplit
 func pitCounter() int32 {
 	const div = (_PIT_HZ / _HZ)
@@ -83,7 +94,7 @@ func timerIntr() {
 //go:nosplit
 func timerInit() {
 	div := int(_PIT_HZ / _HZ)
-	sys.Outb(0x43, 0x36)
+	sys.Outb(0x43, 0x36) // binary, mode 3, LSB/MSB, ch 0
 	sys.Outb(0x40, byte(div&0xff))
 	sys.Outb(0x40, byte((div>>8)&0xff))
 	trap.Register(_IRQ_TIMER, timerIntr)
