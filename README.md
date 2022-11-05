@@ -1,4 +1,6 @@
 # cubgo-os
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2F3293172751%2Fcubgo-os.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2F3293172751%2Fcubgo-os?ref=badge_shield)
+
 
 <a href="https://trackgit.com">
 <img src="https://us-central1-trackgit-analytics.cloudfunctions.net/token/ping/la3dnjvnm2bzv9eg5ola" alt="trackgit-views" />
@@ -214,3 +216,7 @@ Go语言编写操作系统内核一直是一个冷门的领域，难以想一个
 @PKUFlyingPig 在学习这门课中用到的所有资源和作业实现都汇总在 [PKUFlyingPig/MIT6.824 - GitHub](https://github.com/PKUFlyingPig/MIT6.824) 中。
 
 @[OneSizeFitsQuorum](https://github.com/OneSizeFitsQuorum) 的 [Lab 文档](https://github.com/OneSizeFitsQuorum/MIT6.824-2021) 较为清晰地介绍了实现 lab 1-4 和 challenge 1-2 时需要考虑的许多细节，在遇到瓶颈期时可以阅读一下~~
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2F3293172751%2Fcubgo-os.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2F3293172751%2Fcubgo-os?ref=badge_large)
