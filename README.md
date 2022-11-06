@@ -1,6 +1,8 @@
 # cubgo-os
 
-
+<a href="https://trackgit.com">
+<img src="https://us-central1-trackgit-analytics.cloudfunctions.net/token/ping/la3dnjvnm2bzv9eg5ola" alt="trackgit-views" />
+</a>
 
 ## 目录
 
