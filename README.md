@@ -24,6 +24,7 @@
   - [课程简介](#%E8%AF%BE%E7%A8%8B%E7%AE%80%E4%BB%8B)
   - [课程资源](#%E8%AF%BE%E7%A8%8B%E8%B5%84%E6%BA%90)
   - [资源汇总](#%E8%B5%84%E6%BA%90%E6%B1%87%E6%80%BB)
+- [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 <!-- START doctoc -->
