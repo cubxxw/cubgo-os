@@ -95,7 +95,7 @@ apt install tar
 
  🧷 远程下载
 
-> + [wget命令学习可以看这篇](https://github.com/3293172751/awesome-cs-course/blob/master/linux/linux-web/8.md)
+> + [wget命令学习可以看这篇](https://github.com/3293172751/awesome-cs-course/blob/master/linux/linux-web/8.md) 
 
 ```bash
 wget -c https://sm.nsddd.top/uploads/2022/10/28/xSj7V6Zq_eggos_0.4.1_Linux_x86_64.tar.gz?attname=eggos_0.4.1_Linux_x86_64.tar.gz   #eggos-code目录下

@@ -46,3 +46,39 @@ func TestLog_SetLevel(t *testing.T) {
 		})
 	}
 }
+
+func TestLog_SetLevelString(t *testing.T) {
+	for _, test := range []struct {
+		name        string
+		l           string
+		expectError bool
+	}{
+		// These two cases require users to do something pretty explcitly
+		// wrong to hit, but they're worth catching
+		{"log level is too low", "debug", true},
+		{"log level is too high", "none", true},
+
+		// Included log levels
+		{"log.LoglvlDebug is valid", "debug", false},
+		{"log.LoglvlInfo is valid", "info", false},
+		{"log.LoglvlWarn is valid", "warn", false},
+		{"log.LoglvlError is valid", "error", false},
+		{"log.LoglvlNone is valid", "none", false},
+	} {
+		t.Run(test.name, func(t *testing.T) {
+			err := log.SetLevelString(test.l)
+
+			if err == nil && test.expectError {
+				t.Error("expected error, received none")
+			} else if err != nil && !test.expectError {
+				t.Errorf("unexpected error: %#v", err)
+			}
+
+			if !test.expectError {
+				if log.Level.String() != test.l {
+					t.Errorf("log.Level should be %#v, received %#v", log.Level, test.l)
+				}
+			}
+		})
+	}
+}
