@@ -8,7 +8,7 @@ require (
 	github.com/fogleman/fauxgl v0.0.0-20200818143847-27cddc103802
 	github.com/fogleman/gg v1.3.0
 	github.com/fogleman/nes v0.0.0-20210605215016-0aace4b1814a
-	github.com/gin-gonic/gin v1.7.7
+	github.com/gin-gonic/gin v1.9.0
 	github.com/gliderlabs/ssh v0.3.3
 	github.com/icexin/eggos v0.0.0-00010101000000-000000000000
 	github.com/icexin/nk v0.1.0
@@ -19,10 +19,11 @@ require (
 	github.com/prometheus/client_golang v1.11.1
 	github.com/robertkrimen/otto v0.0.0-20210614181706-373ff5438452
 	github.com/spf13/afero v1.8.1
+	github.com/ugorji/go v1.1.7 // indirect
 	golang.org/x/exp v0.0.0-20210729172720-737cce5152fc
 	golang.org/x/image v0.0.0-20210628002857-a66eb6448b8d
 	golang.org/x/mobile v0.0.0-20210716004757-34ab1303b554
-	golang.org/x/sys v0.0.0-20211019181941-9d821ace8654
+	golang.org/x/sys v0.5.0
 	gopkg.in/sourcemap.v1 v1.0.5 // indirect
 )
 
