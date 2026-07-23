@@ -26,8 +26,8 @@ docker pull 3293172751/cubos-ubuntu:1.0.2
 
 **😍 强推的教程：**
 
-+ [x] [docker教程](https://docker.nsddd.top)
-+ [x] [Go语言教程](https://go.nsddd.top)
++ [x] [docker教程](https://docker.cubxxw.com)
++ [x] [Go语言教程](https://go.cubxxw.com)
 + [x] [linux教程](https://github.com/3293172751/awesome-cs-course/blob/master/linux/README.md)
 
 > 二种安装方式，一种是直接`docker pull`拉取镜像，第二种就是使用`dockerfile`，建议第二种。
@@ -82,7 +82,7 @@ docker commit
 
 eggos在每个版本会生成一个ISO镜像文件，我们可以从github的release界面直接下载，从网址 https://github.com/icexin/eggos/releases 进入到eggos的release界面，点击`eggos.iso`下载。
 
-![image-20221013162445155](http://sm.nsddd.top/smimage-20221013162445155.png?xxw@nsddd.top)
+![image-20221013162445155](http://sm.cubxxw.com/smimage-20221013162445155.png?xxw@cubxxw.com)
 
 
 
@@ -98,7 +98,7 @@ apt install tar
 > + [wget命令学习可以看这篇](https://github.com/3293172751/awesome-cs-course/blob/master/linux/linux-web/8.md) 
 
 ```bash
-wget -c https://sm.nsddd.top/uploads/2022/10/28/xSj7V6Zq_eggos_0.4.1_Linux_x86_64.tar.gz?attname=eggos_0.4.1_Linux_x86_64.tar.gz   #eggos-code目录下
+wget -c https://sm.cubxxw.com/uploads/2022/10/28/xSj7V6Zq_eggos_0.4.1_Linux_x86_64.tar.gz?attname=eggos_0.4.1_Linux_x86_64.tar.gz   #eggos-code目录下
 
 mkdir ./eggos-code && tar -zxvf xSj7V6Zq_eggos_0.4.1_Linux_x86_64.tar.gz\?attname\=eggos_0.4.1_Linux_x86_64.tar.gz -C ./eggos/
 ```
@@ -125,7 +125,7 @@ qemu-system-x86_64 -m 256M -nographic -no-reboot -serial mon:stdio -netdev user,
 
 > 没有图形界面终端，如windows的`wsl`需要加上`-nographic`，从而以非图形化方式启动qemu
 
-![image-20221013220451758](http://sm.nsddd.top/smimage-20221013220451758.png?xxw@nsddd.top)
+![image-20221013220451758](http://sm.cubxxw.com/smimage-20221013220451758.png?xxw@cubxxw.com)
 
  🔥上面的图片表示我们已经安装成功了
 
@@ -145,7 +145,7 @@ qemu-system-x86_64 -m 256M -nographic -no-reboot -serial mon:stdio -netdev user,
 js
 ```
 
-![image-20221013205940507](http://sm.nsddd.top/smimage-20221013205940507.png?xxw@nsddd.top)
+![image-20221013205940507](http://sm.cubxxw.com/smimage-20221013205940507.png?xxw@cubxxw.com)
 
 ⬇️ 接下来我们可以使用`js`一样来使用这个解释器。
 
@@ -191,7 +191,7 @@ undefined
 
 ⬇️ 下面我分别开启了`8080`端口和`8081`端口，并且企图杀死`8080`进程并且重新进去
 
-![image-20221013173405464](http://sm.nsddd.top/smimage-20221013173405464.png?xxw@nsddd.top)
+![image-20221013173405464](http://sm.cubxxw.com/smimage-20221013173405464.png?xxw@cubxxw.com)
 
 再一次进入
 
@@ -216,11 +216,11 @@ qemu-system-x86_64 -m 256M -nographic -no-reboot -serial mon:stdio -netdev user,
 
 镜像中设置[samba](./samba.md)文件系统`root-1234`：
 
-![image-20221016124123019](http://sm.nsddd.top/smimage-20221016124123019.png)
+![image-20221016124123019](http://sm.cubxxw.com/smimage-20221016124123019.png)
 
 查看自己的`IP`地址
 
-![image-20221013181120314](http://sm.nsddd.top/smimage-20221013181120314.png?xxw@nsddd.top)
+![image-20221013181120314](http://sm.cubxxw.com/smimage-20221013181120314.png?xxw@cubxxw.com)
 
 💡简单的一个案例如下：
 
@@ -244,9 +244,9 @@ mount smb://root:1234@172.17.0.3:445/samba /share
 >
 > **第一个好像配置的有问题，但是不知道什么原因，所以又配置了一个`samba1`，这个成功了**
 >
-> ![image-20221016141741165](http://sm.nsddd.top/smimage-20221016141741165.png)
+> ![image-20221016141741165](http://sm.cubxxw.com/smimage-20221016141741165.png)
 >
-> ![image-20221016141954717](http://sm.nsddd.top/smimage-20221016141954717.png)
+> ![image-20221016141954717](http://sm.cubxxw.com/smimage-20221016141954717.png)
 
 ```sh
 root@eggos# cd /share
@@ -287,7 +287,7 @@ root@eggos# js fib.js
 
 在docker的ubuntu镜像中创建文件`a.c`
 
-![image-20221016142556967](http://sm.nsddd.top/smimage-20221016142556967.png)
+![image-20221016142556967](http://sm.cubxxw.com/smimage-20221016142556967.png)
 
 ```c
 #include<stdio.h>
@@ -301,7 +301,7 @@ int mian()
 
 **回到eggos检验：**
 
-![image-20221016142735060](http://sm.nsddd.top/smimage-20221016142735060.png)
+![image-20221016142735060](http://sm.cubxxw.com/smimage-20221016142735060.png)
 
 
 
@@ -314,11 +314,11 @@ int mian()
 
 打开浏览器，输入`http://127.0.0.1:8080/debug/pprof/`，即可打开debug页面，从里面我们可以获取当前运行的goroutine堆栈快照。
 
-![http pprof信息](http://sm.nsddd.top/smhttp-pprof.png)
+![http pprof信息](http://sm.cubxxw.com/smhttp-pprof.png)
 
 输入`http://127.0.0.1:8080/fs/`即可访问文件系统根目录，从里面我们可以发现刚刚挂载的`/share`目录。
 
-![fib.js的内容](http://sm.nsddd.top/smfib-js.png)
+![fib.js的内容](http://sm.cubxxw.com/smfib-js.png)
 
 一路点进去之后我们就能访问`/share/fib.js`的内容。
 
@@ -326,7 +326,7 @@ int mian()
 
 > docker搭建的镜像面临的问题：
 >
-> ![graphic](https://docker.nsddd.top/assets/udMYZbpm9a1vLHJ.5f6a5929.jpg)
+> ![graphic](https://docker.cubxxw.com/assets/udMYZbpm9a1vLHJ.5f6a5929.jpg)
 >
 > docker网络的几种模式
 >
@@ -347,7 +347,7 @@ docker run -it --network host --name cubos_host db168e4fe87d
 
 ⚡ 我们重新挂载然后访问
 
-![image-20221016151412615](http://sm.nsddd.top/smimage-20221016151412615.png)
+![image-20221016151412615](http://sm.cubxxw.com/smimage-20221016151412615.png)
 
 > ⚠️暂时没办法访问，跳过~
 
@@ -383,7 +383,7 @@ root@eggos# nes -rom /share/mario.nes
 
 如果一切成功的话，可以看到如下画面
 
-![nes-mario](http://sm.nsddd.top/smnes-mario.png)
+![nes-mario](http://sm.cubxxw.com/smnes-mario.png)
 
 操作按键是固定的，分别如下:
 

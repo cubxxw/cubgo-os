@@ -121,7 +121,7 @@ service smbd restart
 
 ##  给定用户权限
 
-![samba](http://sm.nsddd.top/smsamba.png)
+![samba](http://sm.cubxxw.com/smsamba.png)
 
 
 

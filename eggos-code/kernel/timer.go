@@ -5,7 +5,7 @@
  * @LastEditTime: 2022-10-29 11:27:00
  * @FilePath: \eggos-code\kernel\timer.go
  * @Github_Address: https://github.com/3293172751/cs-awesome-Block_Chain
- * Copyright (c) 2022 by xiongxinwei 3293172751nss@gmail.com, All Rights Reserved. @blog: http://nsddd.top
+ * Copyright (c) 2022 by xiongxinwei 3293172751nss@gmail.com, All Rights Reserved. @blog: http://cubxxw.com
  */
 package kernel
 
